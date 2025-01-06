@@ -1,4 +1,4 @@
-import React from 'react'
+import "@/assets/styles/globals.css";
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import RootNavigation from '@/navigations/RootNavigation'
