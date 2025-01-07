@@ -15,6 +15,12 @@ module.exports = {
           albertExtraBold : ["AlbertSans_800ExtraBold"],
           albertBlack : ["AlbertSans_900Black"],
       },
+      colors : {
+        "dark-bg" : "#151515",
+        "light-bg" : "#fff",
+        "light-dark" : "1d1d1d",
+        "light-gray" : "#cecece"
+      }
     },
   },
   plugins: [],
