@@ -3,7 +3,7 @@ import React from 'react'
 
 const BmiTrackScreen = () => {
   return (
-    <View>
+    <View className="flex-1 px-5">
       <Text>BmiTrackScreen</Text>
     </View>
   )

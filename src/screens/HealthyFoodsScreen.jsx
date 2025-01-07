@@ -3,7 +3,7 @@ import React from 'react'
 
 const HealthyFoodsScreen = () => {
   return (
-    <View>
+    <View className="flex-1 px-5">
       <Text>HealthyFoodsScreen</Text>
     </View>
   )
