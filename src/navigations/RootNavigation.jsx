@@ -12,7 +12,7 @@ const RootNavigation = () => {
       ...DarkTheme.colors,
       background: Colors.dark.background,
       text: Colors.dark.text,
-      cardItem : Colors.dark.card,
+      cardItem : Colors.dark.cardItem,
       border : Colors.dark.border,
       tabBarBg : Colors.dark.tabBarBg
     },
@@ -24,7 +24,7 @@ const RootNavigation = () => {
       ...DefaultTheme.colors,
       background: Colors.light.background,
       text: Colors.light.text,
-      cardItem : Colors.light.card,
+      cardItem : Colors.light.cardItem,
       border : Colors.light.border,
       tabBarBg : Colors.light.tabBarBg
     },
