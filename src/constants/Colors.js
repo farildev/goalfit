@@ -10,13 +10,15 @@ export const Colors = {
     background: '#fff',
     card: '#1d1d1d',
     text: '#151515',
-    border: '#cecece'
+    border: '#cecece',
+    tabBarBg : "#151515"
   },
 
   dark: {
     background: '#151515',
     card: '#1d1d1d',
     text: '#fff',
-    border: '#cecece'
+    border: '#cecece',
+    tabBarBg : "#fff"
   }
 }
