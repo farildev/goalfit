@@ -16,6 +16,7 @@ module.exports = {
           albertBlack : ["AlbertSans_900Black"],
       },
       colors : {
+        "main-color" : "#0085FF",
         "dark-bg" : "#151515",
         "light-bg" : "#fff",
         "light-dark" : "1d1d1d",
