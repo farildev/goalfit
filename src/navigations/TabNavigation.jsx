@@ -10,12 +10,12 @@ import HomeActive from "@/assets/icons/HomeActive";
 import HomeInactive from "@/assets/icons/HomeInactive";
 import ProfileActive from "@/assets/icons/ProfileActive";
 import ProfileInactive from "@/assets/icons/ProfileInactive";
-import SearchActive from "@/assets/icons/SearchActive";
-import SearchInactive from "@/assets/icons/SearchInactive";
 import AppleActive from "@/assets/icons/AppleActive";
 import AppleInactive from "@/assets/icons/AppleInactive";
 import WaterActive from "@/assets/icons/WaterActive";
 import WaterInactive from "@/assets/icons/WaterInactive";
+import BmiActive from "@/assets/icons/BmiActive";
+import BmiInactive from "@/assets/icons/BmiInactive";
 
 const TabNavigation = () => {
   const { Navigator, Screen, Group } = createBottomTabNavigator();
@@ -69,7 +69,7 @@ const TabNavigation = () => {
         name="Bmi"
         component={BmiTrackScreen}
         options={{
-          tabBarIcon : ({focused}) => focused ? (<SearchActive />) : (<SearchInactive />)
+          tabBarIcon : ({focused}) => focused ? (<BmiActive />) : (<BmiInactive />)
         }}
       />
       <Screen 
