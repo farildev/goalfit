@@ -4,7 +4,7 @@ import StackNavigation from "./StackNavigation";
 import { Colors } from "@/constants/Colors";
 
 const RootNavigation = () => {
-  const colorScheme = useColorScheme();
+  const colorScheme = 'dark';
 
   const customDarkTheme = {
     ...DarkTheme,
@@ -14,7 +14,9 @@ const RootNavigation = () => {
       text: Colors.dark.text,
       cardItem : Colors.dark.cardItem,
       border : Colors.dark.border,
-      tabBarBg : Colors.dark.tabBarBg
+      tabBarBg : Colors.dark.tabBarBg,
+      button : Colors.mainColor,
+      placeholder : Colors.light.placeholder
     },
   };
 
@@ -26,7 +28,9 @@ const RootNavigation = () => {
       text: Colors.light.text,
       cardItem : Colors.light.cardItem,
       border : Colors.light.border,
-      tabBarBg : Colors.light.tabBarBg
+      tabBarBg : Colors.light.tabBarBg,
+      button : Colors.light.button,
+      placeholder : Colors.dark.placeholder
     },
   };
 
