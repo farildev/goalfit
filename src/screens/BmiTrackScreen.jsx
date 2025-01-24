@@ -17,13 +17,13 @@ const BmiTrackScreen = () => {
 
   const handleCalculate = () => {
     const { bmi, category } = calculateBMI(parseFloat(weight), parseFloat(height), parseInt(age), selectedGender);
-    navigate('BmiResult', { bmi, category });
+    navigate('BmiResult', { bmi, category, age, selectedGender, weight, height });
   };
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
       <View className="flex-1 p-5">
-        <Text className="text-2xl font-albertSemibold mb-6">Calculate Your BMI</Text>
+        <Text style={{ color: colors.text }} className="text-2xl font-albertSemibold mb-6">📱 Calculate Your BMI</Text>
         <View className="flex-1">
           <View className="flex-col gap-2">
             <View className="flex-row gap-5">
@@ -45,7 +45,7 @@ const BmiTrackScreen = () => {
               </TouchableOpacity>
             </View>
             <View className="mt-5 gap-2">
-              <Text className="text-lg font-albertSemibold">Height (cm)</Text>
+              <Text style={{ color: colors.text }} className="text-lg font-albertSemibold">Height (cm)</Text>
               <View className="px-5 py-7 rounded-xl" style={{ backgroundColor: colors.cardItem }}>
                 <View className="flex-row items-center">
                   <Text className="text-gray-500 font-albertMedium">Your height : </Text>
@@ -66,22 +66,22 @@ const BmiTrackScreen = () => {
           </View>
           <View className="flex-row gap-4 mt-5">
             <View className="flex-1 gap-2">
-              <Text className="text-md font-albertSemibold">Weight (kg)</Text>
+              <Text style={{ color: colors.text }} className="text-md font-albertSemibold">Weight (kg)</Text>
               <View className="flex-row items-center gap-2 border rounded-lg p-5" style={{ borderColor: colors.border, backgroundColor: colors.cardItem }}>
                 <Text className='font-albertMedium text-gray-400'>kg</Text>
-                <TextInput onChangeText={(value) => setWeight(value)} keyboardType='numeric' className="text-md font-albertMedium" maxLength={3} placeholder='Enter your weight' />
+                <TextInput style={{ color: colors.text }} onChangeText={(value) => setWeight(value)} keyboardType='numeric' className="text-md w-full font-albertMedium" placeholderTextColor={colors.placeholder} maxLength={3} placeholder='Enter your weight' />
               </View>
             </View>
             <View className="flex-1 gap-2">
-              <Text className="text-md font-albertSemibold">Age (year)</Text>
+              <Text style={{ color: colors.text }} className="text-md font-albertSemibold">Age (year)</Text>
               <View className="flex-1 flex-row items-center gap-2 border rounded-lg p-5" style={{ borderColor: colors.border, backgroundColor: colors.cardItem }}>
                 <Text className='font-albertMedium text-gray-400'>№</Text>
-                <TextInput onChangeText={(value) => setAge(value)} keyboardType='numeric' className="text-md font-albertMedium" maxLength={3} placeholder='Enter your age' />
+                <TextInput style={{ color: colors.text }} onChangeText={(value) => setAge(value)} keyboardType='numeric' placeholderTextColor={colors.placeholder} className="text-md w-full font-albertMedium" maxLength={3} placeholder='Enter your age' />
               </View>
             </View>
           </View>
         </View>
-        <TouchableOpacity onPress={handleCalculate} activeOpacity={0.7} className="bg-black flex items-center p-4 mt-4 rounded-lg">
+        <TouchableOpacity style={{ backgroundColor: colors.button }} onPress={handleCalculate} activeOpacity={0.7} className="flex items-center p-4 mt-4 rounded-lg">
           <Text className="text-white font-albertSemibold text-md">Calculate BMI</Text>
         </TouchableOpacity>
       </View>
