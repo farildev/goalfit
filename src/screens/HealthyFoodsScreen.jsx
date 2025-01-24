@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { ScrollView } from 'react-native'
+import FoodCard from '@/components/Foods/FoodCard';
 
 const HealthyFoodsScreen = () => {
   return (
-    <View className="flex-1 px-5">
-      <Text>HealthyFoodsScreen</Text>
-    </View>
+    <ScrollView contentContainerStyle={{gap : 16}} className="flex-1 p-5">
+      <FoodCard />
+      <FoodCard />
+      <FoodCard />
+    </ScrollView>
   )
 }
 
