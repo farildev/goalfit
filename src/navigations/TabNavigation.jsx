@@ -16,6 +16,7 @@ import WaterActive from "@/assets/icons/WaterActive";
 import WaterInactive from "@/assets/icons/WaterInactive";
 import BmiActive from "@/assets/icons/BmiActive";
 import BmiInactive from "@/assets/icons/BmiInactive";
+import GoBackButton from "@/components/GoBackButton";
 
 const TabNavigation = () => {
   const { Navigator, Screen, Group } = createBottomTabNavigator();
@@ -26,8 +27,9 @@ const TabNavigation = () => {
       screenOptions={{
         headerTitleStyle: {
           fontFamily: Fonts["600SemiBold"],
-          fontSize: 14,
+          fontSize: 16,
         },
+        headerLeft : () => (<GoBackButton />),
         tabBarStyle: {
           marginBottom: bottom,
           marginHorizontal: 20,
@@ -62,6 +64,7 @@ const TabNavigation = () => {
         name="Water"
         component={WaterTrackScreen}
         options={{
+          headerTitle : "Water Tracker",
           tabBarIcon : ({focused}) => focused ? (<WaterActive />) : (<WaterInactive />)
         }}
       />
@@ -69,6 +72,7 @@ const TabNavigation = () => {
         name="Bmi"
         component={BmiTrackScreen}
         options={{
+          headerTitle : "Calculate BMI",
           tabBarIcon : ({focused}) => focused ? (<BmiActive />) : (<BmiInactive />)
         }}
       />
