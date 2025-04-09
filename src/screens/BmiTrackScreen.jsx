@@ -23,7 +23,6 @@ const BmiTrackScreen = () => {
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
       <View className="flex-1 p-5">
-        <Text style={{ color: colors.text }} className="text-2xl font-albertSemibold mb-6">📱 Calculate Your BMI</Text>
         <View className="flex-1">
           <View className="flex-col gap-2">
             <View className="flex-row gap-5">
