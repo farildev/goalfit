@@ -11,12 +11,12 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import { useGetRecipesQuery } from '@/store/services/recipeService';
 import { useNavigation } from '@react-navigation/native';
+import { useGetAllRecipesQuery } from '@/store/services/recipeService';
 import { useColorScheme } from 'react-native';
 import { useDispatch } from 'react-redux';
 import api from '@/store/api';
-import FoodCard from '@/components/Foods/FoodCard';
+import FoodCard from '@/components/FoodCard';
 import FilterIcon from '@/assets/icons/FilterIcon';
 import ArrowsIcon from '@/assets/icons/ArrowsIcon';
 
@@ -42,10 +42,8 @@ const HealthyFoodsScreen = () => {
     }, 2000);
   }, []);
 
-  const { data, isFetching } = useGetRecipesQuery({
-    q: search,
-    limit: 10,
-  });
+  const { data, isFetching } = useGetAllRecipesQuery({ number: 10 });
+  const recipes = data?.results || [];
 
   const sortOptions = [
     { label: "Sort by name ASC", value: "name:asc" },
@@ -56,8 +54,6 @@ const HealthyFoodsScreen = () => {
     setSort(selectedSort);
     setSortModalVisible(false);
   };
-
-  const recipes = data?.recipes;
 
   return (
     <>
@@ -87,7 +83,6 @@ const HealthyFoodsScreen = () => {
           />
           <View className="flex-row items-center justify-between">
             <TouchableOpacity
-              onPress={() => setSortModalVisible(true)}
               activeOpacity={0.7}
               className="flex-row items-center justify-end gap-2 mt-3"
             >
@@ -109,8 +104,8 @@ const HealthyFoodsScreen = () => {
           scrollEnabled={false}
           contentContainerStyle={{ gap: 10, paddingBottom: 30 }}
           data={recipes}
-          renderItem={({ item }) => <FoodCard recipe={item} navigation={navigation} />}
           keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => <FoodCard recipe={item} navigation={navigation} />}
           ListEmptyComponent={
             !isFetching ? (
               <Text style={{ color: colors.text, textAlign: 'center' }}>
@@ -120,44 +115,6 @@ const HealthyFoodsScreen = () => {
           }
         />
       </ScrollView>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={sortModalVisible}
-        onRequestClose={() => setSortModalVisible(false)}
-      >
-        <View style={{
-          flex: 1,
-          justifyContent: 'flex-end',
-          backgroundColor: 'rgba(0,0,0,0.5)'
-        }}
-        >
-          <View style={{
-            backgroundColor: colors.tabBarBg,
-          }} className="px-5 pb-10 pt-5">
-            {sortOptions.map((option) => (
-              <TouchableOpacity
-                key={option.value}
-                onPress={() => handleSort(option)}
-                style={{
-                  borderBottomWidth: 1,
-                  borderBottomColor: colors.border
-                }}
-                className="px-2 py-5"
-              >
-                <Text className="font-albertMedium" style={{ color: colors.text }}>{option.label}</Text>
-              </TouchableOpacity>
-            ))}
-            <TouchableOpacity
-              onPress={() => setSortModalVisible(false)}
-              className="bg-main-color p-4 rounded-xl"
-            >
-              <Text className="text-center font-albertSemibold text-lg" style={{ color: colors.text }}>Cancel</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </Modal>
     </>
   );
 };
