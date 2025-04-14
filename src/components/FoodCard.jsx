@@ -16,20 +16,20 @@ const FoodCard = ({ recipe, navigation }) => {
           source={{ uri: recipe?.image }} />
       </View>
       <View className="flex-1">
-        <Text numberOfLines={1} style={{ color: colors.text }} className="font-albertSemibold text-xl">{recipe?.name}</Text>
+        <Text numberOfLines={1} style={{ color: colors.text }} className="font-albertSemibold text-xl">{recipe?.title}</Text>
         <Text numberOfLines={2} className="font-albertRegular text-gray-500">lorem ipsum dolor sit amet</Text>
         <View className="flex-col gap-2 mt-3">
           <View className="flex-row items-center gap-1">
             <FontAwesome name="star" size={14} color="yellow" />
-            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.rating}</Text>
+            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.healthScore}</Text>
           </View>
           <View className="flex-row items-center gap-1">
             <TimerIcon color="#c0c0c0" width={14} height={14} />
-            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.prepTimeMinutes} minutes</Text>
+            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.preparationMinutes} minutes</Text>
           </View>
           <View className="flex-row items-center gap-1">
             <FontAwesome5 name="gripfire" size={14} color="#c0c0c0" />
-            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.cuisine}</Text>
+            <Text className="font-albertSemibold" style={{ color: colors.text }}>{recipe?.servings}</Text>
           </View>
         </View>
       </View>
