@@ -1,9 +1,20 @@
 import { View, Text, Pressable, ScrollView } from 'react-native'
 import { useTheme } from '@react-navigation/native'
-import Ionicons from '@expo/vector-icons/Ionicons'
+import { useCallback, useRef } from 'react';
+import WaterTrackBottomSheet from '@/components/WaterTrackBottomSheet';
+import AddWaterBottomSheet from '@/components/AddWaterBottomSheet';
 
 const WaterTrackScreen = () => {
   const { colors } = useTheme();
+  const waterTrackSheetRef = useRef(null);
+  const addWaterSheetRef = useRef(null);
+
+  const handleTrackModal = useCallback(() => {
+    waterTrackSheetRef.current?.expand();
+  }, [])
+  const handleAddWaterModal = useCallback(() => {
+    addWaterSheetRef.current?.expand();
+  }, [])
   return (
     <ScrollView className="flex-1 relative">
       <View className="p-5 h-full">
@@ -12,7 +23,7 @@ const WaterTrackScreen = () => {
             <View className="bg-yellow-500/50 p-3 rounded-2xl">
               <View className="flex-row gap-3 items-center justify-between">
                 <Text style={{ color: colors.text }} className="text-lg font-albertSemibold">Target hydration</Text>
-                <Pressable className="bg-white py-2 px-4 rounded-full">
+                <Pressable onPress={handleTrackModal} className="bg-white py-2 px-4 rounded-full">
                   <Text className="font-albertMedium">Edit</Text>
                 </Pressable>
               </View>
@@ -22,15 +33,12 @@ const WaterTrackScreen = () => {
               <View className="flex-row gap-3 items-center justify-between">
                 <Text style={{ color: colors.text }} className="text-lg font-albertSemibold">Current hydration</Text>
               </View>
-              <Text style={{ color: colors.text }} className="mt-10 text-4xl">500 ml</Text>
+              <Text style={{ color: colors.text }} className="mt-10 text-4xl">750 ml</Text>
             </View>
           </View>
-          <View className="flex-1">
-
-          </View>
         </View>
-        <Pressable className=" h-fit flex justify-center items-center mt-5 bg-main-color p-4 rounded-xl w-full">
-          <Text className="text-white font-albertMedium text-lg">Salam</Text>
+        <Pressable onPress={handleAddWaterModal} className=" h-fit flex justify-center items-center mt-5 bg-main-color p-4 rounded-xl w-full">
+          <Text className="text-white font-albertMedium text-lg">Add Water (+250ml)</Text>
         </Pressable>
         <View>
           <Text style={{ color: colors.text }} className="mt-10 text-lg font-albertMedium">Drink logs</Text>
@@ -49,6 +57,8 @@ const WaterTrackScreen = () => {
             </View>
           </View>
         </View>
+        <WaterTrackBottomSheet ref={waterTrackSheetRef} />
+        <AddWaterBottomSheet ref={addWaterSheetRef} />
       </View>
     </ScrollView>
   )
