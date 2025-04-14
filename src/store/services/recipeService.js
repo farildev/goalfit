@@ -1,22 +1,22 @@
-import api from "../api";
+import { API_KEY } from '@/constants/BaseUrl';
+import api from '../api';
 
 const recipeService = api.injectEndpoints({
-  endpoints : (builder) => ({
-    getRecipes : builder.query({
-      query : (params) => ({
-        url : '/recipes',
-        params
+  endpoints: (builder) => ({
+    getAllRecipes: builder.query({
+      query: (params) => ({
+        url: '/recipes/complexSearch',
+        params: {
+          ...params,
+          apiKey: API_KEY,
+          addRecipeNutrition: true,
+        },
       }),
-      providesTags : ['RECIPES']
-    }),
-    getRecipeById : builder.query({
-      query : (id) => ({
-        url : `/recipes/${id}`,
-      })
+      providesTags: ['RECIPES'],
     }),
   }),
-  overrideExisting : true
-})
+  overrideExisting: true,
+});
 
-export const {useGetRecipesQuery, useGetRecipeByIdQuery} = recipeService;
+export const { useGetAllRecipesQuery } = recipeService;
 export default recipeService;
