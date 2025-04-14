@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { calculateBMI } from '@/utils/bmiCalculator';
 import { useNavigation } from '@react-navigation/native';
+import { toast } from 'sonner-native';
 const BmiTrackScreen = () => {
   const { colors } = useTheme();
   const { navigate } = useNavigation();
@@ -16,9 +17,19 @@ const BmiTrackScreen = () => {
   const [selectedGender, setSelectedGender] = useState("male");
 
   const handleCalculate = () => {
-    const { bmi, category } = calculateBMI(parseFloat(weight), parseFloat(height), parseInt(age), selectedGender);
-    navigate('BmiResult', { bmi, category, age, selectedGender, weight, height });
+    if (height && weight && age && selectedGender) {
+      const { bmi, category } = calculateBMI(
+        parseFloat(weight),
+        parseFloat(height),
+        parseInt(age),
+        selectedGender
+      );
+      navigate('BmiResult', { bmi, category, age, selectedGender, weight, height });
+    } else {
+      toast.error("You cannot leave inputs.");
+    }
   };
+
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
